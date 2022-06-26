@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: 100;
+}
+
+.navbar-style{
+    box-shadow: 0 3px 10px plum;
+    /* background-color: aqua; */
+}
+.logo {
+    height: 60px;
+    padding: 2px 10px;
+}
+ #headtextStyle{
+    color:#8ba0c2;
+    font-size: 20px;
+    padding-left: 50px;
+    
+}
+
+#headtextStyle:hover{
+    color:#81d0e3;
+
+}
+#clickdropText{
+    color:#8ba0c2;
+
+}
+#clickdropText:active{
+    background: plum;
+    color: white;
+
+}
+#clickDATA:active{
+    background: #81d0e3;
+    color: white;
+}
+
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
