@@ -1,20 +1,32 @@
 <?php
 
-namespace App\Entity\User;
+namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\CreateUser;
 use App\Entity\BaseEntity\BaseEntity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: [
+        'post'=>[
+            'controller' => CreateUser::class,
+
+        ]
+    ],
+    itemOperations: ['get']
+)]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[ORM\Column(type: 'string', length: 180)]
     public ?string $email;
+
+    #[ORM\Column(type: "string", unique: true, nullable: false)]
+    public string $username;
 
     #[ORM\Column(type: 'json')]
     public array $roles = [];
@@ -39,16 +51,6 @@ class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUse
         $this->email = $email;
     }
 
-
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
 
     /**
      * @see UserInterface
@@ -92,4 +94,22 @@ class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUse
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+
+    public function getUserIdentifier(): string
+    {
+        return $this->username;
+    }
+
+
+    public function setUsername(string $userName)
+    {
+        $this->username = $userName;
+    }
+
+    public function getUsername():string
+    {
+        return $this->username;
+    }
+
 }

@@ -2,7 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Entity\User\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +14,32 @@ class UpdateUserController extends AbstractController
     #[Route('/edit', name: 'app_user_user_edit', methods: ['GET', 'POST'])]
     public function update(Request $request, UserRepository $userRepository): Response
     {
-        $user = new User();
+//        $user = new User();
+        if ($request->server->get('REQUEST_METHOD')=='POST') {
+
+            $roles = $request->get('roles');
+            $roles = explode(' ',$roles);
+            $id = $request->get('id');
+            $user = $userRepository->find($id);
+            $user->email = $request->get('username');
+            $user->password = $request->get('password');
+            $user->roles = $roles;
+            $user->dateCreate = new \DateTime();
+            $user->dateUpdate = new \DateTime();
+
+
+
+
+
+//            $user->email = $request->get('username');
+//            $user->password = $request->get('password');
+//            $user->roles= $roles;
+
+//
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+        }
         // $form = $this->createForm(UserType::class, $user);
         // $form->handleRequest($request);
 
@@ -29,5 +53,6 @@ class UpdateUserController extends AbstractController
             'user' => $user,
         ]);
     }
+
 
 }

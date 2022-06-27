@@ -38,7 +38,7 @@ class ExpandOAuthOpenApi implements ExpandOpenApiInterface
                                 'multipart/form-data' => new MediaType(new ArrayObject([
                                     'type' => 'object',
                                     'properties' => [
-                                        'email' => [
+                                        'username' => [
                                             'type' => 'string',
                                         ],
                                         'password' => [

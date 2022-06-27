@@ -15,8 +15,6 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\Service\JWTService:
 
-
-
     App\:
         resource: '../src/'
         exclude:
@@ -29,6 +27,10 @@ services:
         resource: '../src/Controller'
         tags: [ 'controller.service_arguments' ]
 
+    App\Repository\:
+        resource: '../src/Repository'
+        tags: [ 'controller.service_arguments' ]
+
     App\OpenApi\OpenApiFactory:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@App\OpenApi\OpenApiFactory.inner' ]
@@ -38,6 +40,12 @@ services:
         factory: [ '@App\Factory\Token\JWTConfigurationFactory', '__invoke' ]
         arguments: [ '%env(resolve:OAUTH_PRIVATE_KEY)%', '%env(resolve:OAUTH_PUBLIC_KEY)%', '%env(resolve:OAUTH_PRIVATE_KEY_PASS)%' ]
 
+    App\EventListener\UserResolveListener:
+        arguments:
+            - '@security.user_providers'
+            - '@security.password_hasher'
+        tags:
+            - { name: kernel.event_listener, event: league.oauth2_server.event.user_resolve, method: onUserResolve }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

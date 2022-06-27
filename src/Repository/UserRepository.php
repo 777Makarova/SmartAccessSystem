@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\User\User;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -93,4 +93,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
 
     }
+
+//    public function update (){
+//        return $this->createQueryBuilder('u')
+//            ->update()
+//    }
 }
