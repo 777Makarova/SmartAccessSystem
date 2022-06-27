@@ -14,25 +14,31 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private ?string $email;
+    public ?string $email;
 
     #[ORM\Column(type: 'json')]
-    private array $roles = [];
+    public array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private string $password;
+    public string $password;
 
+
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param string|null $email
+     */
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
+
 
     /**
      * A visual identifier that represents this user.

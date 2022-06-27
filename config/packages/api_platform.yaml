@@ -24,7 +24,7 @@ api_platform:
 
         # The oauth flow grant type.
         #        flow: 'password'
-        flow: 'application'
+        flow: 'password'
 
         # The oauth token url.
         tokenUrl: '/token'
