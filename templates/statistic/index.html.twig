@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="content-wrapper" class="d-flex flex-column">
+<div style="padding-top: 200px;" id="content-wrapper" class="d-flex flex-column">
 <div class="container-fluid">
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -25,7 +25,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Всего пользователей</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">13</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{usersAmount}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -43,7 +43,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Последний вход</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">27.08.22 12:34:46</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{lastAccessAttempt}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -60,8 +60,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                последний пользователь который входил </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Semen</div>
+                                                id последнего пользователя который входил </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{lastUser}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -80,7 +80,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Ошибки доступа</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{accessFailures}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>

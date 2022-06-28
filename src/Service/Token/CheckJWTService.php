@@ -34,6 +34,10 @@ class CheckJWTService
             $accessLog->user_id_byClaim = intval($claimUserID);
             $accessLog->roles_byClaim=$roleByClaim;
             $accessLog->token=$value;
+            $accessLog->dateCreate = new \DateTime();
+            $accessLog->dateUpdate = new \DateTime();
+            $accessLog->result = $checkResult;
+
 
             print_r(json_encode($accessLog));
             $this->entityManager->persist($accessLog);

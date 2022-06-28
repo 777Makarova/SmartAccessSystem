@@ -94,8 +94,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     }
 
-//    public function update (){
-//        return $this->createQueryBuilder('u')
-//            ->update()
-//    }
+    public function update ($username,$password,$roles){
+        return $this->createQueryBuilder('u')
+            ->update('User')
+            ->set('u.username', ':userName')
+            ->set('u.password', ':password')
+            ->set('u.roles',':roles')
+            ->setParameter('username',$username)
+            ->setParameter('password',$password)
+            ->setParameter('roles',$roles)
+            ->getQuery();
+    }
 }

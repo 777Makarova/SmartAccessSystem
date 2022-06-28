@@ -14,7 +14,7 @@ class UpdateUserController extends AbstractController
     #[Route('/edit', name: 'app_user_user_edit', methods: ['GET', 'POST'])]
     public function update(Request $request, UserRepository $userRepository): Response
     {
-//        $user = new User();
+        $user = new User();
         if ($request->server->get('REQUEST_METHOD')=='POST') {
 
             $roles = $request->get('roles');

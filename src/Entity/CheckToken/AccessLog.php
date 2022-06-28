@@ -14,49 +14,42 @@ use App\Controller\JWTToken\CheckJWTController;
 use Doctrine\ORM\Mapping\Entity;
 
 
-//#[ApiResource (
-//    collectionOperations: [
-//        'post'=>[
-//            'deserialize' => false,
-//            'controller' => CheckJWTController::class,
-//            'path'=>'api/check_jwt',
-//            'openapi_context' =>[
-//                'requestBody' =>[
-//                    'description' => 'Check JWT Token',
-//                    'required' => true,
-//                    'content'=>[
-//                        'multipart/form-data'=>[
-//                            'schema'=>[
-//                                'type' => 'object',
-//                                'properties' => [
-//                                    'JWT' => [
-//                                        'type' => 'string',
-//                                        'description' => 'Write the JWT'
-//                                    ]
-//                                ]
-//                            ]
-//                        ]
-//                    ]
-//                ]
-//            ]
-//        ]
-//    ],
-//    itemOperations: ['get'=>[
-//        'path'=>'check_token'
-//    ]]
-//
-//)]
+#[ApiResource (
+    collectionOperations: [
+        'post'=>[
+            'deserialize' => false,
+            'controller' => CheckJWTController::class,
+            'path'=>'api/check_jwt',
+            'openapi_context' =>[
+                'requestBody' =>[
+                    'description' => 'Check JWT Token',
+                    'required' => true,
+                    'content'=>[
+                        'multipart/form-data'=>[
+                            'schema'=>[
+                                'type' => 'object',
+                                'properties' => [
+                                    'JWT' => [
+                                        'type' => 'string',
+                                        'description' => 'Write the JWT'
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    itemOperations: ['get'=>[
+        'path'=>'check_token'
+    ]]
+
+)]
 #[ORM\Entity]
-class AccessLog
+class AccessLog extends BaseEntity
 {
 
-    /**
-     * @var int|null
-     */
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
 
     /**
      * @var string
@@ -70,8 +63,12 @@ class AccessLog
     #[ORM\Column(type: 'json')]
     public array $roles_byClaim;
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(type: 'text', )]
     public string $token;
+
+
+    #[ORM\Column(type: 'string')]
+    public string $result;
 
     /**
      * @return int|null
@@ -88,5 +85,23 @@ class AccessLog
     {
         return $this->token;
     }
+
+    /**
+     * @return string
+     */
+    public function getResult(): string
+    {
+        return $this->result;
+    }
+
+    /**
+     * @param string $result
+     */
+    public function setResult(string $result): void
+    {
+        $this->result = $result;
+    }
+
+
 
 }
