@@ -5,6 +5,7 @@ namespace App\Controller\JWTToken;
 
 use App\Entity\CreateToken\Token;
 use App\Entity\User;
+use App\Repository\TokenRepository;
 use App\Service\Token\JWTService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +25,17 @@ class CreateJWTController extends AbstractController
     {
     }
 
-    #[Route('/createjwt', name: 'app_user_user_create', methods: ['GET', 'POST'])]
+
+    #[Route('/', name: 'app_token_index', methods: ['GET'])]
+
+    public function index(TokenRepository $tokenRepository): Response
+    {
+        return $this->render('token/index.html.twig', [
+            'tokens' => $tokenRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/create', name: 'app_token_create', methods: ['GET', 'POST'])]
     public function createToken(Request $request, UserRepository $userRepository, JWTService $JWTService): Response
     {
         $token = new Token();

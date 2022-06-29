@@ -23,7 +23,7 @@ class DeleteJWTController extends AbstractController
     /**
      * @throws ORMException
      */
-    #[Route('/deletejwt', name: 'app_user_user_create', methods: ['GET', 'POST'])]
+    #[Route('/deletejwt', name: 'app_token_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, UserRepository $userRepository): Response
     {
         $token = new Token();
