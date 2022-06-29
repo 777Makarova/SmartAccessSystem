@@ -23,33 +23,36 @@
                 </div>
 
                 <div  class="section">
-                    <div>
-                        <h2 class="mb-5" style="font-size: 40px; color:rgba(182, 160, 248, 1)">
-                            Изменение данных пользователя
-                        </h2>
-                    </div>
-                    <div class="mb-4">
-                        <label for="text" class="form-label ">Введите id пользователя</label>
-                        <input name="id" class="form-control customForm"  placeholder="1" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="text" class="form-label ">Введите имя пользователя</label>
-                        <input name="username" class="form-control customForm"  placeholder="JoshMoore" required>
-                    </div>
+                    <form method="post">
 
-                    <div class="mb-4">
-                        <label for="text" class="form-label ">Введите пароль</label>
-                        <input name="password" class="form-control customForm" placeholder="JoshMoorePass" required>
-                    </div>
+                        <div>
+                            <h2 class="mb-5" style="font-size: 40px; color:rgba(182, 160, 248, 1)">
+                                Изменение данных пользователя
+                            </h2>
+                        </div>
+                        <div class="mb-4">
+                            <label for="text" class="form-label ">Введите id пользователя</label>
+                            <input name="id" class="form-control customForm"  placeholder="1" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="text" class="form-label ">Введите имя пользователя</label>
+                            <input name="username" class="form-control customForm"  placeholder="JoshMoore" required>
+                        </div>
 
-                    <div class="mb-4">
-                        <label for="text" class="form-label ">Введите роли для пользователя (пример: ["ROLE_USER"])</label>
-                        <input name="roles" class="form-control customForm" placeholder="[&#34ROLE_USER&quot]" required>
-                    </div>
+                        <div class="mb-4">
+                            <label for="text" class="form-label ">Введите пароль</label>
+                            <input name="password" class="form-control customForm" placeholder="JoshMoorePass" required>
+                        </div>
 
-                    <div class="d-grid">
-                        <button id="loginButton" class="btn btn-outline-info" type="submit">Внести изменения</button>
-                    </div>
+                        <div class="mb-4">
+                            <label for="text" class="form-label ">Введите роли для пользователя (пример: ["ROLE_USER"])</label>
+                            <input name="roles" class="form-control customForm" placeholder="[&#34ROLE_USER&quot]" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button id="loginButton" class="btn btn-outline-info" type="submit" name="submit">Внести изменения</button>
+                        </div>
+                    </form>
                 </div>
 
 

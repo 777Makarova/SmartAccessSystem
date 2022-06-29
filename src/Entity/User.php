@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
         ]
     ],
-    itemOperations: ['get']
+    itemOperations: ['get','delete', 'put']
 )]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface

@@ -9,11 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 #[AsController]
+
 class JWTController extends AbstractController
 {
+
 
     public function __invoke(Request $request, JWTService $JWTService, UserRepository $repository): JsonResponse|Token
     {

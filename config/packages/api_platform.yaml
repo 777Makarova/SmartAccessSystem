@@ -1,7 +1,7 @@
 api_platform:
 
     # The title of the API.
-    title: 'TEST APP'
+    title: 'SmartAccessSystem'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:

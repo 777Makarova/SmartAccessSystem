@@ -38,8 +38,8 @@ class UserController extends AbstractController
 
             $roles = $request->get('roles');
             $roles = explode(' ',$roles);
-            $user->email = $request->get('username');
-            $user->password = $request->get('password');
+            $user->username = $request->get('username');
+            $user->setPassword($request->get('password'));
             $user->roles= $roles;
             $user->dateCreate = new \DateTime();
             $user->dateUpdate = new \DateTime();
@@ -108,7 +108,7 @@ class UserController extends AbstractController
 //        ]);
 //    }
 
-//    #[Route('/{id}', name: 'app_user_user_delete', methods: ['POST'])]
+//    #[Route('/delete', name: 'app_user_user_delete', methods: ['POST'])]
 //    public function delete(Request $request, User $user, UserRepository $userRepository): Response
 //    {
 //        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

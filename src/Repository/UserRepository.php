@@ -94,15 +94,37 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     }
 
-    public function update ($username,$password,$roles){
+    /**
+     * @param $username
+     * @param $password
+     * @param $roles
+     * @param $user_id
+     * @return \Doctrine\ORM\Query
+     */
+    public function update ($username,$password,$roles, $user_id): \Doctrine\ORM\Query
+    {
         return $this->createQueryBuilder('u')
-            ->update('User')
-            ->set('u.username', ':userName')
+            ->update('u')
+            ->set('u.username', ':username')
             ->set('u.password', ':password')
             ->set('u.roles',':roles')
+            ->where('u.id = :user_id')
             ->setParameter('username',$username)
             ->setParameter('password',$password)
             ->setParameter('roles',$roles)
+            ->setParameter('user_id', $user_id)
             ->getQuery();
     }
+
+    public function delete ($user_id)
+    {
+        return $this->createQueryBuilder('u')
+            ->delete( User::class,'u')
+            ->where('u.id = 13')
+            ->setParameter('user_id', $user_id)
+            ->getQuery();
+//            ->getResult();
+
+    }
 }
+

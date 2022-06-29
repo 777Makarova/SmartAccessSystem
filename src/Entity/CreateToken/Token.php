@@ -35,9 +35,10 @@ use Symfony\Component\Validator\Constraints as Assert;
                     ]
                 ]
             ]
-        ]
+        ],
+
     ],
-    itemOperations: ['get']
+    itemOperations: ['get', 'delete']
 
 )]
 
