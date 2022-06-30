@@ -22,14 +22,10 @@ class StatisticController extends AbstractController
 
         $lastAccessLog = end($accessLogs);
         $lastUser = $lastAccessLog->user_id_byClaim;
-        //        создать в табллице юзер поле date_of_attempt
-        //        $lastAccessAttempt = $lastAccessLog['date_of_attempt']
 
-        $lastAccessAttempt = '27.08.22 12:34:46';
-        //        создать в табллице юзер поле $accessFailures
-        $accessFailures = '4';
+        $lastAccessAttempt = $lastAccessLog->dateCreate;
 
-
+        $accessFailures = count($entityManager->getRepository(AccessLog::class)->findBy(array('result'=> '0')));
 
 
 
