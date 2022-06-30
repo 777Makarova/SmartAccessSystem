@@ -96,7 +96,7 @@
                     <div>
                       <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Топ 3 пользователя</h6>
+                          <h6 class="m-0 font-weight-bold text-primary">Топ 3 пользователей по колличеству входов</h6>
                         </div>
                         <div class="card-body">
                             <canvas id="myChart" class = "mychart"width="10" height="10"></canvas>
@@ -121,13 +121,13 @@ var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
         labels: [
-          'Semen',
-          'Andrew',
-          'Tanya'
+            '{{pieChartKeys[0]}}',
+            '{{pieChartKeys[1]}}',
+            '{{pieChartKeys[2]}}'
   ],
   datasets: [{
     label: 'My First Dataset',
-    data: [5, 3, 3],
+    data: [{{pieChartValues[0]}}, {{pieChartValues[1]}}, {{pieChartValues[2]}}],
     backgroundColor: [
       'rgb(182, 160, 248)',
       'rgb(241, 242, 243)',

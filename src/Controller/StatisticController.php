@@ -18,24 +18,40 @@ class StatisticController extends AbstractController
     {
 
         $accessLogs = $entityManager->getRepository(AccessLog::class)->findAll();
-        $usersAmount = count($entityManager->getRepository(User::class)->findAll());
+
+        $users = $entityManager->getRepository(User::class)->findAll();
+        $usersAmount = count($users);
+
 
         $lastAccessLog = end($accessLogs);
         $lastUser = $lastAccessLog->user_id_byClaim;
-
         $lastAccessAttempt = $lastAccessLog->dateCreate;
+        $lastAccessAttemptStr = $lastAccessAttempt->format('Y-m-d H:i:s');
+        $accessFailures = count($entityManager->getRepository(AccessLog::class)->findBy(array('result' => '0')));
 
-        $accessFailures = count($entityManager->getRepository(AccessLog::class)->findBy(array('result'=> '0')));
+        $userNames = array();
 
-
+        foreach ($accessLogs as $accessLog) {
+            $userId = $accessLog->user_id_byClaim;
+            $userName = $entityManager->getRepository(User::class)->findOneBy(array('id' => $userId))->getUsername();
+            $userNames[] = $userName;
+        }
+        $dataForPieChart = array_count_values($userNames);
+        $pieChartKeys = array_keys($dataForPieChart);
+        $pieChartValues = array_values($dataForPieChart);
 
 
 
         return $this->render('statistic/index.html.twig', [
             'usersAmount' => $usersAmount,
             'lastUser' => $lastUser,
-            'lastAccessAttempt' => $lastAccessAttempt,
-            'accessFailures' => $accessFailures
+            'lastAccessAttempt' => $lastAccessAttemptStr,
+            'accessFailures' => $accessFailures,
+            'pieChartKeys' => $pieChartKeys,
+            'pieChartValues' => $pieChartValues
+
         ]);
     }
 }
+
+
