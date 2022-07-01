@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\User;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 

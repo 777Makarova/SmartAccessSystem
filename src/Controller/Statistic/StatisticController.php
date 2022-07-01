@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Statistic;
 
 
 use App\Entity\CheckToken\AccessLog;
-use App\Entity\User;
+use App\Entity\User\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +18,8 @@ class StatisticController extends AbstractController
     {
 
         $accessLogs = $entityManager->getRepository(AccessLog::class)->findAll();
-
         $users = $entityManager->getRepository(User::class)->findAll();
+
         $usersAmount = count($users);
 
 

@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping\Entity;
         'post'=>[
             'deserialize' => false,
             'controller' => CheckJWTController::class,
-            'path'=>'api/check_jwt',
+            'path'=>'/check_jwt',
             'openapi_context' =>[
                 'requestBody' =>[
                     'description' => 'Check JWT Token',

@@ -4,9 +4,8 @@ namespace App\Security;
 
 
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Service\OAuthTest\UserManager;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

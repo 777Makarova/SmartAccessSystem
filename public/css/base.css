@@ -57,10 +57,11 @@
     width: 110px;
     margin-top: 25px;
     margin-bottom: 80px;
-    border-radius: 3rem;
+    border-radius: 4rem;
 }
 .imgPosition:hover{
     box-shadow: 0 3px 10px rgb(33, 195, 213);
+    /*border-radius: 4rem;*/
     
 }
 
@@ -99,6 +100,10 @@
 #loginButton:hover{
     color:white;
     
+}
+
+#columnParams{
+    width: 100px;
 }
 
 /* #loginButton{

@@ -4,17 +4,14 @@ namespace App\Controller\JWTToken;
 
 
 use App\Entity\CreateToken\Token;
-use App\Entity\User;
 use App\Repository\TokenRepository;
+use App\Repository\UserRepository;
 use App\Service\Token\JWTService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\UserRepository;
-
-use Doctrine\ORM\Exception\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 #[Route('/token')]

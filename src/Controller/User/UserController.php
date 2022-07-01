@@ -2,19 +2,20 @@
 
 namespace App\Controller\User;
 
-use App\Entity\User;
+use App\Entity\User\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user/user')]
 class UserController extends AbstractController
 {
 
-    public function __construct(private readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly EntityManagerInterface $entityManager, private UserPasswordHasherInterface $passwordHasher)
     {
     }
 
@@ -29,7 +30,7 @@ class UserController extends AbstractController
 
 
     #[Route('/new', name: 'app_user_user_new', methods: ['GET', 'POST'])]
-    public function update(Request $request, UserRepository $userRepository): Response
+    public function new(Request $request, UserRepository $userRepository): Response
     {
 
 
@@ -37,9 +38,10 @@ class UserController extends AbstractController
         if ($request->server->get('REQUEST_METHOD')=='POST'){
 
             $roles = $request->get('roles');
-            $roles = explode(' ',$roles);
+            $roles = explode(',',$roles);
             $user->username = $request->get('username');
-            $user->setPassword($request->get('password'));
+            $user->email=$request->get('email');
+            $user->setPassword($this->passwordHasher->hashPassword($user, ($request->get('password'))));
             $user->roles= $roles;
             $user->dateCreate = new \DateTime();
             $user->dateUpdate = new \DateTime();
@@ -47,6 +49,7 @@ class UserController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
+//            $data->setPassword($this->passwordHasher->hashPassword($data, $data->getPassword()));
 
         }
         // $form = $this->createForm(UserType::class, $user);

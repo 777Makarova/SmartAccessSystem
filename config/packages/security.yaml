@@ -3,7 +3,7 @@ security:
 
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        App\Entity\User:
+        App\Entity\User\User:
             algorithm: auto
             cost: 12
 
@@ -13,7 +13,7 @@ security:
         app_user_provider:
 #            id: App\Security\UserProvider
             entity:
-                class: App\Entity\User
+                class: App\Entity\User\User
                 property: username
     firewalls:
         api_token:

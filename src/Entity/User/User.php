@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\CreateUser;
+use App\Controller\User\CreateUser;
 use App\Entity\BaseEntity\BaseEntity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     collectionOperations: [
         'post'=>[
             'controller' => CreateUser::class,
+            "security" => "is_granted('ROLE_ADMIN')"
 
         ]
     ],
