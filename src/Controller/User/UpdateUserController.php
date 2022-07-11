@@ -37,44 +37,11 @@ class UpdateUserController extends AbstractController
             $user->setRoles($roles);
 
             $this->entityManager->flush();
-
-//            $userUpdate = $userRepository->update($username,$password,$roles,$user_id);
-//           dd ($userUpdate);
-
-
-//            $user = $userRepository->find($id);
-//            $user->email = $request->get('username');
-//            $user->password = $request->get('password');
-//            $user->roles = $roles;
-//            $user->dateCreate = new \DateTime();
-//            $user->dateUpdate = new \DateTime();
-
-
-
-
-
-//            $user->email = $request->get('username');
-//            $user->password = $request->get('password');
-//            $user->roles= $roles;
-
-//
-//            $this->entityManager->persist($user);
-//            $this->entityManager->flush();
-
         }
-        // $form = $this->createForm(UserType::class, $user);
-        // $form->handleRequest($request);
-
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $userRepository->add($user, true);
-
-        //     return $this->redirectToRoute('app_user_user_index', [], Response::HTTP_SEE_OTHER);
-        // }
 
         return $this->renderForm('user/user/edit.html.twig', [
             'user' => $user,
         ]);
     }
-
 
 }

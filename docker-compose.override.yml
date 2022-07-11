@@ -4,5 +4,15 @@ services:
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
-      - "5432"
+#      - target: 3306
+#        published: 33061
+#        protocol: tcp
+      - "3306"
 ###< doctrine/doctrine-bundle ###
+
+
+#  mysql:
+#    ports:
+#      - target: 3306
+#        published: 33061
+#        protocol: tcp

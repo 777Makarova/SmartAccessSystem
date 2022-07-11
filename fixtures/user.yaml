@@ -1,0 +1,18 @@
+App\Entity\User\User:
+  book_{1..10}:
+    id:  <current()>
+    email: <email()>
+    username: <name()>
+    roles: <roles()>
+#    написать метод для ролей
+    password: <password()>
+    dateCreate: <dateTime()>
+    dateUpdate: <dateTime()>
+
+
+
+#    isbn: <isbn13()>
+#    title: <sentence(4)>
+#    description: <text()>
+#    author: <name()>
+#    publicationDate: <dateTime()>

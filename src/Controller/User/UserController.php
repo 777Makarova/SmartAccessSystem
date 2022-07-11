@@ -49,17 +49,9 @@ class UserController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-//            $data->setPassword($this->passwordHasher->hashPassword($data, $data->getPassword()));
-
+//
         }
-        // $form = $this->createForm(UserType::class, $user);
-        // $form->handleRequest($request);
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $userRepository->add($user, true);
-
-        //     return $this->redirectToRoute('app_user_user_index', [], Response::HTTP_SEE_OTHER);
-        // }
 
         return $this->renderForm('user/user/new.html.twig', [
             'user' => $user,
@@ -74,42 +66,6 @@ class UserController extends AbstractController
         ]);
     }
 
-//    #[Route('/edit', name: 'app_user_user_edit', methods: ['GET', 'POST'])]
-//    public function edit(Request $request, UserRepository $userRepository): Response
-//    {
-////        $user = new User();
-//        // $form = $this->createForm(UserType::class, $user);
-//        // $form->handleRequest($request);
-//
-//        // if ($form->isSubmitted() && $form->isValid()) {
-//        //     $userRepository->add($user, true);
-//
-//        //     return $this->redirectToRoute('app_user_user_index', [], Response::HTTP_SEE_OTHER);
-//        // }
-//
-//        return $this->renderForm('user/user/edit.html.twig', [
-////            'user' => $user,
-//        ]);
-//    }
-//    #[Route('/edit', name: 'app_user_user_edit', methods: ['GET', 'POST'])]
-//    public function edit(Request $request, User $user, UserRepository $userRepository): Response
-//    {
-//
-//        $user = new User();
-////        $form = $this->createForm(UserType::class, $user);
-////        $form->handleRequest($request);
-////
-////        if ($form->isSubmitted() && $form->isValid()) {
-////            $userRepository->add($user, true);
-////
-////            return $this->redirectToRoute('app_user_user_index', [], Response::HTTP_SEE_OTHER);
-////        }
-
-//        return $this->renderForm('user/user/edit.html.twig', [
-//            'user' => $user,
-////            'form' => $form,
-//        ]);
-//    }
 
 //    #[Route('/delete', name: 'app_user_user_delete', methods: ['POST'])]
 //    public function delete(Request $request, User $user, UserRepository $userRepository): Response
