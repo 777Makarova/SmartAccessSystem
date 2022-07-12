@@ -50,7 +50,7 @@ league_oauth2_server:
     # Full path to the public key file
     # How to generate a public key: https://oauth2.thephpleague.com/installation/#generating-public-and-private-keys
     public_key:  '%env(resolve:OAUTH_PUBLIC_KEY)%'  # Required, Example: /var/oauth/public.key
-
+#  role_prefix:          ROLE_OAUTH2_
   scopes:
     # Scopes that you wish to utilize in your application.
     # This should be a simple array of strings.
@@ -68,6 +68,8 @@ league_oauth2_server:
       # Name of the entity manager that you wish to use for managing clients and tokens.
       entity_manager:       default
 
+  # Set a custom prefix that replaces the default 'ROLE_OAUTH2_' role prefix
+#  role_prefix:          ROLE_OAUTH2_
 
   client:
     # Set a custom client class. Must be a League\Bundle\OAuth2ServerBundle\Model\Client
