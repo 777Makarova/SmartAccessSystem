@@ -53,30 +53,5 @@ class Token extends BaseEntity
     #[Assert\NotNull]
     public string $token;
 
-    public function getUsedId(): string
-    {
-        return $this->used_id;
-    }
-
-    public function setUsedId(string $used_id): void
-    {
-        $this->used_id = $used_id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param string $token
-     */
-    public function setToken(string $token): void
-    {
-        $this->token = $token;
-    }
 
 }

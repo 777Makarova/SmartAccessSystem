@@ -70,38 +70,6 @@ class AccessLog extends BaseEntity
     #[ORM\Column(type: 'string')]
     public string $result;
 
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getToken(): string
-    {
-        return $this->token;
-    }
-
-    /**
-     * @return string
-     */
-    public function getResult(): string
-    {
-        return $this->result;
-    }
-
-    /**
-     * @param string $result
-     */
-    public function setResult(string $result): void
-    {
-        $this->result = $result;
-    }
-
 
 
 }
